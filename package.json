@@ -1,0 +1,31 @@
+{
+  "name": "devtinder",
+  "version": "1.0.0",
+  "description": "working on my skills",
+  "keywords": [
+    "nodejs",
+    "js",
+    "mongo"
+  ],
+  "homepage": "https://github.com/walia4shubham/devTinder#readme",
+  "bugs": {
+    "url": "https://github.com/walia4shubham/devTinder/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walia4shubham/devTinder.git"
+  },
+  "license": "ISC",
+  "author": "shubham",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+  "start": "node src/app.js",
+  "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
