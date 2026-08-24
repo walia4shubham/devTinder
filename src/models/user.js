@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import validator from 'validator';
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -10,7 +11,12 @@ const userSchema = new Schema({
     emailId: {
         type: String,
         require: true,
-        unique: true
+        unique: true,
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error('eroor  dsds     ')
+            }
+        }
     },
     password: {
         type: String,
@@ -26,6 +32,8 @@ const userSchema = new Schema({
         default: 'https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp'
     }
 }, {timestamps: true});
+
+userSchema.index({firstName: 1, lastname:1})
 
 const User = mongoose.model('User', userSchema);
 
