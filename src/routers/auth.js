@@ -31,6 +31,7 @@ router.post('/signUp', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
   try {
+    console.log('herere')
     const userData = req.body;
     console.log(userData, 'userData')
     const { emailId, password } = userData;
@@ -42,9 +43,10 @@ router.post('/login', async (req, res, next) => {
       if (encrptPass) {
         const encryptToken = jwt.sign({'user_id':_id}, process.env.PRIVATE_KEYS,)
         res.cookie('token',encryptToken)
-           res.send(`${firstName} has been found`);
+        delete saveInDb.password
+           res.json({data : saveInDb});
       } else {
-        res.status(400).send({ error: `wrong password` })
+         return res.status(401).json({ message: 'Invalid credentials' })
       }
     } else {
       console.log('not found')
@@ -59,7 +61,7 @@ router.post('/login', async (req, res, next) => {
 router.post('/logout', async (req, res, next) =>{
 
    res.clearCookie('token')
-   res.send('cookie has been reset')
+   res.status(200).json({message: 'cookie has been reset'})
 
 })
 

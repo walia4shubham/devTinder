@@ -14,7 +14,7 @@ userRouterForConnection.get('/user/requests', tokenData, async (req, res, next) 
    
         let allData = await connectionReq.find({  
            toUserId:  loggedInUserData,
-        //    status:'Pending'
+           status:'interested'
           }).populate('fromUserId')
 
             console.log(allData,'checkAlreadyInterestedDatacheckAlreadyInterestedDatacheckAlreadyInterestedData');
@@ -36,7 +36,7 @@ userRouterForConnection.get('/user/cooneections', tokenData, async (req, res, ne
             { toUserId:  loggedInUserData},{fromUserId:  loggedInUserData}
             ],
           
-           status:'Accepted'
+           status:'accepted'
           }).populate('fromUserId').populate('toUserId')
 
             console.log(allData,'checkAlreadyInterestedDatacheckAlreadyInterestedDatacheckAlreadyInterestedData');
@@ -49,10 +49,10 @@ userRouterForConnection.get('/user/cooneections', tokenData, async (req, res, ne
 })
 
 
-userRouterForConnection.get('/feed/:page/:limit', tokenData,async (req,res,next) =>{
+userRouterForConnection.get('/feed',tokenData,async (req,res,next) =>{
   try{
     const { userData , params} = req;
-    console.log(params) 
+    console.log(params,userData,'ram') 
     const {page, limit} = params;
     const pageNum = parseInt(page) || 1;
     const limitNum = parseInt(limit) || 10

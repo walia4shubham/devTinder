@@ -32,8 +32,8 @@ routerForProfile.patch('/profile/edit', tokenData, async (req, res, next) => {
                 userData[field] = updatedData[field];
             }
         });
-        await userData.save();
-        res.send({ status: 'Data has been saved' })
+      let newD =  await userData.save();
+        res.send({ status: 'Data has been saved',data: newD })
     } catch (e) {
         res.status(400).json({ message: `${e.message}` })
     }

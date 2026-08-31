@@ -45,7 +45,7 @@ export let tokenData = async (req, res, next) => {
   try {
     const { token } = req.cookies;
     if (!token) {
-     return res.status(400).json({ message: 'User has not valid permission' })
+     return res.status(401).json({ message: 'User has not valid permission' })
     } else {
       const checkToken = await jwt.verify(token, process.env.PRIVATE_KEYS);
       const { user_id } = checkToken || {};
