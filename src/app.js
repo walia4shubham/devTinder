@@ -12,6 +12,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(cookieParser()); // must be added BEFORE your routes
 app.use(express.json()); 
+console.log("CURRENT DIRECTORY:", process.cwd());
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true
