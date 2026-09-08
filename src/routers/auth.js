@@ -44,7 +44,7 @@ router.post('/login', async (req, res, next) => {
         const encryptToken = jwt.sign({'user_id':_id}, process.env.PRIVATE_KEYS,)
         res.cookie('token',encryptToken)
         delete saveInDb.password
-           res.json({data : saveInDb});
+           res.json({data : saveInDb,message: 'Ci/CD also docker'});
       } else {
          return res.status(401).json({ message: 'Invalid credentials' })
       }
